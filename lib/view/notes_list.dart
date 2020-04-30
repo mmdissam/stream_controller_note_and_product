@@ -8,7 +8,6 @@ class NotesList extends StatefulWidget {
 }
 
 class _NotesListState extends State<NotesList> {
-
   NoteBloc noteBloc = NoteBloc();
   TextEditingController _textEditingController = TextEditingController();
 
@@ -18,12 +17,13 @@ class _NotesListState extends State<NotesList> {
     _textEditingController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: noteBloc.noteStream,
+        stream: noteBloc.noteStream,
         // ignore: missing_return
-        builder:(BuildContext context, AsyncSnapshot snapshot){
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
@@ -55,7 +55,8 @@ class _NotesListState extends State<NotesList> {
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: TextFormField(
-                        controller: _textEditingController,),
+                        controller: _textEditingController,
+                      ),
                     ),
                     RaisedButton(
                         color: Colors.white30,

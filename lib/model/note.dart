@@ -1,8 +1,5 @@
-class Note{
-
+class Note {
   String content;
 
   Note(this.content);
-
-
 }

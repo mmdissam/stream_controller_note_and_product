@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_streams_products/view/product_list.dart';
 
 import 'view/notes_list.dart';
 
