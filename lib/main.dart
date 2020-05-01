@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'view/notes_list.dart';
+import 'package:flutter_streams_products/view/product_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,10 +21,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notes List'),
+        title: Text('Product List'),
         centerTitle: true,
       ),
-      body: NotesList(),
+      body: ProductsList(),
     );
   }
 }

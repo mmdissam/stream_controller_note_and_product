@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_streams_products/blocs/poducts_bloc.dart';
 import 'package:flutter_streams_products/model/product.dart';
@@ -9,10 +10,16 @@ class ProductsList extends StatefulWidget {
 
 class _ProductsListState extends State<ProductsList> {
   ProductsBloc productsBloc = ProductsBloc();
+  TextEditingController _nameProductController = TextEditingController();
+  TextEditingController _idOfProductController = TextEditingController();
+  TextEditingController _numberProductController = TextEditingController();
 
   @override
   void dispose() {
     productsBloc.dispose();
+    _nameProductController.dispose();
+    _numberProductController.dispose();
+    _idOfProductController.dispose();
     super.dispose();
   }
 
@@ -64,16 +71,41 @@ class _ProductsListState extends State<ProductsList> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: TextFormField(
+                      controller: _idOfProductController,
+                      decoration: InputDecoration(labelText: 'ID Product'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: TextFormField(
+                      controller: _nameProductController,
+                      decoration: InputDecoration(labelText: 'Name Product'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: TextFormField(
+                      controller: _numberProductController,
+                      decoration:
+                          InputDecoration(labelText: 'number of Product'),
+                    ),
+                  ),
                   RaisedButton(
                       color: Colors.white,
                       child: Text('add'),
                       onPressed: () {
-                        Product product = Product("9", "product 9", 50000);
+                        Product product = Product(
+                            _idOfProductController.text,
+                            _nameProductController.text,
+                            int.parse(_numberProductController.text));
                         productsBloc.addProduct.add(product);
                       }),
                   SizedBox(
                     height: 16,
-                  )
+                  ),
                 ],
               );
             }
